@@ -13,9 +13,11 @@ socket.on('users', (data) => {
 
 SEND.on("click", function () {
     let message = MESSAGE.val();
-    let chat = new Chat(currentUser.user, message, currentUser.color);
-    socket.emit("send message", chat);
-    MESSAGE.val("");
+    if (message !== '') {
+        let chat = new Chat(currentUser.user, message, currentUser.color);
+        socket.emit("send message", chat);
+        MESSAGE.val("");
+    }
 });
 
 JOIN.on("click", function () {
@@ -23,18 +25,13 @@ JOIN.on("click", function () {
     if (user !== '') {
         currentUser = new User(user);
         USER.val("");
-        socket.emit("new user", user, function (data) {
-            if (data) {
-                goToChat();
-            } else {
-                alert('User is already exist');
-            }
-        });
+        socket.emit("new user", user);
+        goToChat();
     }
 });
 
 EXIT.on("click", function () {
-    socket.emit('disconnect user', currentUser);
+    socket.emit('disconnect manual', currentUser);
     currentUser = null;
     goToJoin();
 });

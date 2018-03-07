@@ -14,16 +14,10 @@ const io = require('socket.io')(server);
 let users = [];
 
 io.sockets.on('connection', (socket) => {
-    socket.on('new user', function (data, callback) {
-        console.log(data);
-        if (users.indexOf(data) != -1) {
-            callback(false);
-        } else {
-            socket.user = data;
-            users.push(socket.user);
-            updateUsers();
-            callback(true);
-        }
+    socket.on('new user', function (data) {
+        socket.user = data;
+        users.push(socket.user);
+        updateUsers();
     });
 
     socket.on('send message', (data) => {
@@ -35,13 +29,13 @@ io.sockets.on('connection', (socket) => {
         });
     });
 
-    socket.on('disconnect', (data) => {
+    socket.on('disconnect', () => {
         if (!socket.user) return;
         users.splice(users.indexOf(socket.user), 1);
         updateUsers();
     });
 
-    socket.on('disconnect user', (data) => {
+    socket.on('disconnect manual', (data) => {
         users.splice(users.indexOf(data.user), 1);
         updateUsers();
     });
