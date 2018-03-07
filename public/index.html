@@ -34,7 +34,9 @@
                     <div id="callMessages">
                     </div><div id="usersOnline">
                         <button id="exit">EXIT</button>
-                        <h3 class="header">Users Online</h3>
+                        <h3 class="header">Users Online<span class="badge-number" id="usersNumber">0</span></h3>
+                        <div id="listUsersOnline">
+                        </div>
                     </div>
                 </div>
                 <div class="col-message">
@@ -53,7 +55,14 @@
         <script src="assets/jquery/dist/jquery.min.js"></script>
         <script src="assets/popper.js/dist/umd/popper.min.js"></script>
         <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="assets/moment/min/moment.min.js"></script>
         <script src="assets/socket.io-client/dist/socket.io.js"></script>
+        <script src="js/globals/constants.js"></script>
+        <script src="js/templates/message.template.js"></script>
+        <script src="js/templates/users.template.js"></script>
+        <script src="js/models/chat.model.js"></script>
+        <script src="js/models/user.model.js"></script>
+        <script src="js/controllers/chat.controller.js"></script>
         <script src="js/app.js"></script>
     </body>
 </html>
