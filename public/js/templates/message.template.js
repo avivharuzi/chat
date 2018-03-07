@@ -5,7 +5,7 @@ function messageTemplate(user) {
 
     CALL_MESSAGES.append(`
         <div class="main-message">
-            <p><span class="badge-user" ${color}>${user.user}</span><span class="date">${user.time}</span><span>${user.message}</span></p>
+            <p><span class="badge-user" ${color}>${user.user}</span><span class="date">${user.time}</span><span class="text-message">${user.message}</span></p>
         </div>
     `);
 }
