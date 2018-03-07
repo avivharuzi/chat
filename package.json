@@ -1,0 +1,40 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "chat application with node.js and socket.io",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avivharuzi/chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avivharuzi/chat/issues"
+  },
+  "homepage": "https://github.com/avivharuzi/chat#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0-beta.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "helmet": "^3.12.0",
+    "hover.css": "^2.2.1",
+    "jquery": "^3.3.1",
+    "moment": "^2.21.0",
+    "mongoose": "^5.0.9",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "popper.js": "^1.12.9",
+    "serve-favicon": "^2.4.5",
+    "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4"
+  }
+}
