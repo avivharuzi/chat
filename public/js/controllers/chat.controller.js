@@ -5,6 +5,7 @@ let currentUser = null;
 
 socket.on("new message", function (data) {
     messageTemplate(data);
+    CALL_MESSAGES.scrollTop(CALL_MESSAGES[0].scrollHeight);
 });
 
 socket.on('users', (data) => {
@@ -27,6 +28,7 @@ JOIN.on("click", function () {
         USER.val("");
         socket.emit("new user", user);
         goToChat();
+        MESSAGE.focus();
     }
 });
 
@@ -34,16 +36,41 @@ EXIT.on("click", function () {
     socket.emit('disconnect manual', currentUser);
     currentUser = null;
     goToJoin();
+    USER.focus();
+});
+
+MESSAGE.on("keypress", function (event) {
+    if (event.keyCode == 13) {
+        SEND.click();
+    }
+});
+
+USER.on("keypress", function (event) {
+    if (event.keyCode == 13) {
+        JOIN.click();
+    }
+});
+
+$("body").on("keyup", function (event) {
+    if (event.keyCode == 27 && currentUser !== null) {
+        EXIT.click();
+    }
 });
 
 function goToJoin() {
     MAIN_CHAT.hide();
     MAIN_ENTERANCE.show();
+    resetChat();
 }
 
 function goToChat() {
     MAIN_CHAT.show();
     MAIN_ENTERANCE.hide();
+    resetChat();
+}
+
+function resetChat() {
+    CALL_MESSAGES.html("");
 }
 
 function getRandomColor() {
