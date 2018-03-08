@@ -259,6 +259,8 @@ body {
     border-radius: 5px;
     color: #fff;
     padding: 5px 10px;
+	display: inline-block;
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 1199px) {
